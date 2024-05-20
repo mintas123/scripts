@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+if [ -n "$2" ]; then
+  VERSION=$(sdk list $1 | grep $2 | grep installed | awk -F "|" '{print $6}')
+  echo $VERSION | pbcopy
+else
+  VERSION=$(sdk list $1 | grep installed | awk -F "|" '{print $6}')
+fi
+
+echo $VERSION
